@@ -1,2 +1,2 @@
 # TerraWorld
-game looks like a terraria i copy terraria for a AI 
+game looks like a terraria i terraria for a AI (AI) do it
