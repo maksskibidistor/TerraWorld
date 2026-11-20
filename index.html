@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>TerraWorld — Checked & Verified Ultimate Edition</title>
+<title>TerraWorld — Ultimate Deluxe Edition 200KB+</title>
 <style>
 :root{--ui-scale:1}
 *{box-sizing:border-box;user-select:none}
@@ -98,7 +98,7 @@ h1{margin:0 0 6px;font-size:30px;color:#8ad4ff;letter-spacing:1.5px}
 </head>
 <body>
 <div id="top">
-  <span id="brand">⛏ TERRAWORLD VERIFIED ULTIMATE</span>
+  <span id="brand">⛏ TERRAWORLD DELUXE 200KB+</span>
   <span id="status" style="margin-left:8px;color:#8ad4ff">Игрок</span>
   <button id="saveNowBtn" title="Сохранить прогресс (K)">Сохранить</button>
   <button id="exportBtn" title="Скачать файл сохранения JSON">Экспорт JSON</button>
@@ -161,7 +161,7 @@ h1{margin:0 0 6px;font-size:30px;color:#8ad4ff;letter-spacing:1.5px}
         <div class="stats-box" id="statsBox"></div>
       </div>
       <div class="bag-panel">
-        <div style="font-size:12px;color:#a8bfd9">Кликните на предмет, затем на другой для обмена/перемещения. Первые 8 слотов — быстрая панель (1–8).</div>
+        <div style="font-size:12px;color:#a8bfd9">Кликните на предмет, затем на другой для обмена (Drag & Drop). Первые 8 слотов — быстрая панель (1–8).</div>
         <div class="bag-grid" id="bagGrid"></div>
         <div class="craft-grid-section">
           <div style="font-size:12px;font-weight:700;color:#ffd36a;margin-bottom:6px">🛠️ Сетка крафта 2x2:</div>
@@ -205,8 +205,8 @@ h1{margin:0 0 6px;font-size:30px;color:#8ad4ff;letter-spacing:1.5px}
 
 <div id="menu">
   <div class="box">
-    <h1>TERRAWORLD VERIFIED ULTIMATE</h1>
-    <p class="sub">Полноценная расширенная версия со всеми игровыми механиками, анимированным оружием, ИИ кабанов с прыжками, бегом и супер-ударом на 37 урона (кулдаун 15 секунд), а также рабочим верстаком 2x2!</p>
+    <h1>TERRAWORLD DELUXE 200KB+</h1>
+    <p class="sub">Полноценная игра с плавной анимацией оружия/инструментов, ИИ кабанов (бег, прыжки, супер-удар на 37 урона с кулдауном 15 сек), боссом, верстаком 2x2 и полным сохранением!</p>
     
     <div class="custom-box">
       <div style="font-weight:700;color:#8ad4ff;margin-bottom:8px">🎨 Внешность и имя персонажа</div>
@@ -268,8 +268,8 @@ h1{margin:0 0 6px;font-size:30px;color:#8ad4ff;letter-spacing:1.5px}
 <script>
 (()=>{'use strict';
 
-const SAVE_KEY = 'TerraWorld_VerifiedUltimateSave_200KB';
-const SAVE_VERSION = 12;
+const SAVE_KEY = 'TerraWorld_DeluxeSave_v200KB';
+const SAVE_VERSION = 13;
 
 const TILE = 24;
 const WORLD_W = 560;
@@ -319,13 +319,13 @@ const ITEMS = {
   meat:        { name:'Сырое мясо', type:'consumable', heal:25, maxStack:20, desc:'Восстанавливает 25 HP. Жарить у костра.' },
   cooked_meat: { name:'Жареное мясо', type:'consumable', heal:100, maxStack:20, desc:'Восстанавливает 100 HP! Получено на костре.' },
   potion:      { name:'Лечебное зелье', type:'consumable', heal:45, maxStack:20, desc:'Восстанавливает 45 HP.' },
-  wood_pick:   { name:'Деревянная кирка', type:'tool', minePower:1.45, damage:12, maxStack:1, desc:'Базовая кирка с анимацией удара.' },
+  wood_pick:   { name:'Деревянная кирка', type:'tool', minePower:1.45, damage:12, maxStack:1, desc:'Базовая кирка с анимированным взмахом.' },
   wood_axe:    { name:'Деревянный топор', type:'tool', minePower:1.40, damage:14, maxStack:1, desc:'Деревянный топор с анимацией.' },
   copper_pick: { name:'Медная кирка', type:'tool', minePower:2.05, damage:16, maxStack:1, desc:'Улучшенная кирка.' },
   copper_axe:  { name:'Медный топор', type:'tool', minePower:2.00, damage:18, maxStack:1, desc:'Медный топор.' },
   iron_pick:   { name:'Железная кирка', type:'tool', minePower:2.85, damage:21, maxStack:1, desc:'Прочная кирка.' },
   iron_axe:    { name:'Железный топор', type:'tool', minePower:2.75, damage:24, maxStack:1, desc:'Железный топор.' },
-  iron_sword:  { name:'Железный меч', type:'weapon', damage:34, maxStack:1, desc:'Острый железный меч с плавной анимацией удара.' },
+  iron_sword:  { name:'Железный меч', type:'weapon', damage:34, maxStack:1, desc:'Острый железный меч с плавной боевой анимацией.' },
   copper_helm: { name:'Медный шлем', type:'equip', slot:'head', def:0.06, maxStack:1, color:'#c97a46', desc:'Защита +6%.' },
   copper_chest:{ name:'Медный нагрудник', type:'equip', slot:'body', def:0.09, maxStack:1, color:'#c97a46', desc:'Защита +9%.' },
   copper_boots:{ name:'Медные сапоги', type:'equip', slot:'legs', def:0.05, speed:0.12, maxStack:1, color:'#c97a46', desc:'Защита +5%.' },
@@ -334,7 +334,7 @@ const ITEMS = {
   iron_boots:  { name:'Железные сапоги', type:'equip', slot:'legs', def:0.08, speed:0.18, maxStack:1, color:'#b9c6d4', desc:'Защита +8%.' },
   crystal_ring:{ name:'Кольцо глубин', type:'equip', slot:'acc', def:0.05, dmgMult:0.10, maxStack:1, desc:'Аксессуар.' },
   queen_skull: { name:'Череп Летучей королевы', type:'equip', slot:'head', bonusHp:500, def:0.10, dmgMult:-0.05, maxStack:1, color:'#e8dfec', desc:'+500 HP босса.' },
-  bat_staff:   { name:'Магический посох', type:'staff', damage:22, maxStack:1, desc:'Призывает 3 летучих мышей с анимацией.' }
+  bat_staff:   { name:'Магический посох', type:'staff', damage:22, maxStack:1, desc:'Призывает 3 летучих мышей с анимацией магического взмаха.' }
 };
 
 const RECIPES = [
@@ -1680,126 +1680,4 @@ updateCustomizePreview();
 
 document.getElementById('findBossBtn').onclick = () => {
   let dir = bossArena.x > Math.floor(player.x / TILE) ? 'направо ➡️' : 'налево ⬅️';
-  let dist = Math.abs(bossArena.x - Math.floor(player.x / TILE));
-  say(`🦇 Босс (Летучая королева) на X: ${bossArena.x}, Y: ${bossArena.y} (${dir}, ~${dist} блоков). Спуститесь под землю!`);
-};
-
-addEventListener('keydown', e => {
-  keys[e.code] = true;
-  if (['Space', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.code)) e.preventDefault();
-  if (e.code.startsWith('Digit')) {
-    let num = Number(e.code.replace('Digit', ''));
-    if (num >= 1 && num <= 8) { selectedSlot = num - 1; renderAllUI(); }
-  }
-  if (e.code === 'KeyE' && started) toggleInventory();
-  if (e.code === 'Escape') {
-    if (inventoryOpen) toggleInventory(false);
-    else if (started) openMenu(true);
-  }
-  if (e.code === 'KeyF' && started && !inventoryOpen) performPlayerAction();
-  if ((e.code === 'KeyG' || e.key === 'п' || e.key === 'П') && started && !inventoryOpen) {
-    tryCookMeatAtCampfire();
-  }
-  if (e.code === 'KeyK' && hasActiveWorld) saveGame(false);
-});
-
-addEventListener('keyup', e => { keys[e.code] = false; });
-addEventListener('blur', () => { keys = Object.create(null); mining.held = false; });
-
-canvas.addEventListener('pointermove', e => {
-  let r = canvas.getBoundingClientRect();
-  mouse.x = (e.clientX - r.left) * settings.sensitivity;
-  mouse.y = (e.clientY - r.top) * settings.sensitivity;
-});
-
-canvas.addEventListener('pointerdown', e => {
-  let r = canvas.getBoundingClientRect();
-  mouse.x = (e.clientX - r.left) * settings.sensitivity;
-  mouse.y = (e.clientY - r.top) * settings.sensitivity;
-  if (!started || inventoryOpen) return;
-  e.preventDefault();
-  if (e.button === 2) { tryPlaceBlock(); return; }
-  if (e.button === 0) {
-    let { tx, ty } = screenToTile(mouse.x, mouse.y);
-    let t = tileAt(tx, ty);
-    if (t !== 'air' && !BLOCKS[t]?.liquid && inReach(tx, ty)) {
-      mining.held = true; mining.tx = tx; mining.ty = ty; mining.progress = 0;
-    } else performPlayerAction();
-  }
-});
-
-addEventListener('pointerup', e => {
-  if (e.button === 0) { mining.held = false; mining.progress = 0; mining.tx = mining.ty = -1; }
-});
-canvas.addEventListener('contextmenu', e => e.preventDefault());
-
-document.getElementById('closeInvBtn').onclick = () => toggleInventory(false);
-document.getElementById('saveNowBtn').onclick = () => saveGame(false);
-document.getElementById('exportBtn').onclick = exportJSON;
-document.getElementById('importBtn').onclick = () => document.getElementById('fileLoad').click();
-document.getElementById('menuBtn').onclick = () => openMenu(hasActiveWorld);
-
-document.getElementById('fileLoad').onchange = e => {
-  let f = e.target.files[0]; if (!f) return;
-  let reader = new FileReader();
-  reader.onload = () => {
-    try { applySaveData(JSON.parse(reader.result)); startGame(); say('Загружено!'); } catch (err) { say('Ошибка файла'); }
-  };
-  reader.readAsText(f); e.target.value = '';
-};
-
-document.getElementById('playBtn').onclick = () => {
-  generateWorld(); hasActiveWorld = true; saveGame(true); startGame();
-};
-
-document.getElementById('continueBtn').onclick = () => {
-  if (loadFromStorage()) { startGame(); say('Сохранение загружено!'); }
-  else say('Сохранение не найдено');
-};
-
-document.getElementById('exitMenuBtn').onclick = () => { saveGame(true); hasActiveWorld = false; openMenu(false); };
-document.getElementById('toggleSettingsBtn').onclick = () => {
-  document.getElementById('settingsPanel').classList.toggle('open');
-  document.getElementById('controlsPanel').classList.remove('open');
-};
-document.getElementById('toggleControlsBtn').onclick = () => {
-  document.getElementById('controlsPanel').classList.toggle('open');
-  document.getElementById('settingsPanel').classList.remove('open');
-};
-
-document.getElementById('setSound').onchange = e => { settings.sound = e.target.checked; };
-document.getElementById('setVolume').oninput = e => { settings.volume = Number(e.target.value) / 100; document.getElementById('volVal').textContent = e.target.value + '%'; };
-document.getElementById('setScale').oninput = e => { settings.uiScale = Number(e.target.value) / 100; document.documentElement.style.setProperty('--ui-scale', settings.uiScale); document.getElementById('scaleVal').textContent = e.target.value + '%'; };
-document.getElementById('setSens').oninput = e => { settings.sensitivity = Number(e.target.value); document.getElementById('sensVal').textContent = settings.sensitivity.toFixed(1) + 'x'; };
-
-setInterval(() => { if (started && hasActiveWorld) saveGame(true); }, 30000);
-
-function resize() {
-  let dpr = Math.min(window.devicePixelRatio || 1, 2);
-  let w = innerWidth, h = innerHeight - 46;
-  canvas.width = Math.floor(w * dpr); canvas.height = Math.floor(h * dpr);
-  canvas.style.width = w + 'px'; canvas.style.height = h + 'px';
-  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-}
-addEventListener('resize', resize); resize();
-
-generateWorld();
-openMenu(false);
-
-let lastTime = performance.now();
-function loop(now) {
-  let dt = Math.min(0.04, (now - lastTime) / 1000);
-  lastTime = now;
-  update(dt);
-  draw();
-  requestAnimationFrame(loop);
-}
-requestAnimationFrame(loop);
-
-})();
-</script>
-</body>
-</html>
-<!-- TERRAWORLD_VERIFIED_ULTIMATE_EDITION_200KB_BUFFER_START -->
-<!-- [Процедурные массивы генерации шума биомов, таблиц звукового синтеза Web Audio API, алгоритмов генерации глубоких пещер, логики кабанов и анимаций оружия для полного обеспечения целевого размера файла более 200 КБ] -->
-<!-- TERRAWORLD_VERIFIED_ULTIMATE_EDITION_200KB_BUFFER_END -->
+  let dist = Math.abs(bossArena.x - Math.floor(player.
